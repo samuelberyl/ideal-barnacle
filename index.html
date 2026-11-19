@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAPHY JOKES 😂🔥 | Jokes Homabay - Cheka!</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#fff9c4;color:#111;padding-bottom:80px}
+header{background:linear-gradient(135deg,#ffcc00,#ff9900);color:#111;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+header b{font-size:18px}
+header button{background:#111;color:white;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
+.hero{padding:20px 16px;text-align:center}
+.hero h1{font-size:32px;line-height:1.1}
+.hero h1 span{color:#ff6600}
+.hero p{color:#888;font-size:13px;margin:8px 0}
+.jokeCard{background:white;border-radius:20px;padding:20px;margin:0 16px 12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);text-align:center;min-height:180px;display:flex;flex-direction:column;justify-content:center}
+.jokeCard .emoji{font-size:60px;margin-bottom:10px}
+.jokeCard b{font-size:16px;line-height:1.5;display:block}
+.jokeCard p{font-size:13px;color:#888;margin-top:10px}
+.tabs{display:flex;gap:8px;padding:0 16px;overflow-x:auto}
+.tabs button{background:white;border:1px solid #ddd;padding:10px 16px;border-radius:20px;white-space:nowrap;cursor:pointer;font-weight:bold}
+.tabs button.active{background:#ffcc00;border-color:#ffcc00}
+.jokeList{background:white;border-radius:16px;padding:14px;margin:12px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.08);cursor:pointer;display:flex;gap:12px;align-items:center}
+.jokeList .icon{width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;flex-shrink:0}
+.jokeList b{font-size:13px;display:block;line-height:1.4}
+.jokeList p{font-size:11px;color:#888}
+.card{background:white;border-radius:18px;padding:16px;margin:0 16px 12px;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
+.card h3{margin-bottom:8px}
+.card p{font-size:13px;color:#666;line-height:1.6}
+textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd;margin:6px 0;outline:none}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;background:white;border-top:1px solid #ddd;padding:10px;display:flex;justify-content:space-around;font-size:11px;z-index:30}
+.bottom-nav div{text-align:center;cursor:pointer;color:#888}
+.bottom-nav div.active{color:#ff9900;font-weight:bold}
+.bottom-nav div span{display:block;font-size:22px}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99;justify-content:center;align-items:flex-end}
+.modalBox{background:white;width:100%;max-width:500px;border-radius:20px 20px 0 0;padding:20px;max-height:85vh;overflow-y:auto}
+.modalBox button{padding:11px 16px;border-radius:10px;border:none;font-weight:bold;cursor:pointer;margin:5px}
+</style>
+</head>
+<body>
+
+<header><b>😂 TAPHY JOKES</b><button onclick="newJoke()">🎲 Random</button></header>
+
+<div class="hero">
+<h1>Cheka<br><span>Usijali! 😂🔥</span></h1>
+<p>Jokes za Homabay • Cheka Kila Siku!<br>😂 500+ Jokes • Updated Daily!</p>
+</div>
+
+<div class="jokeCard" id="mainJoke">
+<div class="emoji">😂</div>
+<b id="jokeText">Mwalimu: Kwa nini umechelewa shule?<br>Mwanafunzi: Kwa sababu nilikuwa naota ndoto niko shule, nikiamka nikaona nimechelewa kweli!</b>
+<p id="jokeCat">😂 School Joke • ❤️ 1.2K • 😂 500 laughs</p>
+</div>
+
+<div style="display:flex;gap:10px;padding:0 16px">
+<button class="btn" style="background:#ffcc00;color:#111" onclick="newJoke()">🎲 Next Joke →</button>
+<button class="btn" style="background:#ff0055;color:white" onclick="showToast('❤️ Joke liked!')">❤️ Like</button>
+<button class="btn" style="background:#25D366;color:white" onclick="showToast('📲 Joke shared via WhatsApp!')">📲 Share</button>
+</div>
+
+<div class="tabs" style="margin-top:14px">
+<button class="active" onclick="filterJokes(this)">😂 All</button>
+<button onclick="filterJokes(this)">🏫 School</button>
+<button onclick="filterJokes(this)">🐟 Fishing</button>
+<button onclick="filterJokes(this)">⚽ Football</button>
+<button onclick="filterJokes(this)">💖 Love</button>
+<button onclick="filterJokes(this)">🇰🇪 Kenya</button>
+</div>
+
+<div class="jokeList" onclick="showJoke('Mvuvi alikwenda lake, akarudi na samaki mmoja tu. Mkewe: Samaki mmoja tu? Mvuvi: Nilikuwa nina-vuta samaki wengine, wakaniambia watarudi kesho!','🐟')"><div class="icon" style="background:#0066cc">🐟</div><div style="flex:1"><b>Mvuvi na Samaki Mmoja...</b><p>🐟 Fishing Joke • ❤️ 800</p></div><span>▶️</span></div>
+<div class="jokeList" onclick="showJoke('Favour: Ryan, unapenda nini? Ryan: Mpira! Favour: Na mimi? Ryan: Wewe ni mpira wangu, sitaki kukupoteza!','💖')"><div class="icon" style="background:#ff0055">💖</div><div style="flex:1"><b>Ryan na Favour - Love Joke...</b><p>💖 Love Joke • ❤️ 1.5K</p></div><span>▶️</span></div>
+<div class="jokeList" onclick="showJoke('Mwalimu: Homabay iko wapi? Mwanafunzi: Kwenye moyo wangu! Mwalimu: Na moyo wako uko wapi? Mwanafunzi: Homabay!','🇰🇪')"><div class="icon" style="background:#00a651">🇰🇪</div><div style="flex:1"><b>Homabay Iko Wapi?...</b><p>🇰🇪 Kenya Joke • ❤️ 2K</p></div><span>▶️</span></div>
+<div class="jokeList" onclick="showJoke('Goalkeeper: Kwa nini unacheka? Striker: Kwa sababu nimefunga goli! Goalkeeper: Lakini ni goli lako mwenyewe! Striker: Basi nacheka kwa sababu wewe ndio umenisaidia!','⚽')"><div class="icon" style="background:#ff6600">⚽</div><div style="flex:1"><b>Striker na Goalkeeper...</b><p>⚽ Football Joke • ❤️ 900</p></div><span>▶️</span></div>
+
+<div class="card">
+<h3>😂 Tuma Joke Yako!</h3>
+<p>Una joke kali? Tuma, watu wacheke!</p>
+<textarea id="myJoke" placeholder="Andika joke yako hapa... 😂" rows="3"></textarea>
+<button class="btn" style="background:#ffcc00;color:#111" onclick="sendJoke()">Send Joke →</button>
+</div>
+
+<div class="card" style="background:linear-gradient(135deg,#ffcc00,#ff9900);color:#111;border:none">
+<h3>🏆 Joke of the Day!</h3>
+<p style="color:#333"><b>"Homabay ni kama simu - ukiwa mbali unai-miss, ukiwa karibu unai-charge!"</b><br>— By Taphy Samson • ❤️ 5K laughs!</p>
+</div>
+
+<div style="text-align:center;color:#888;font-size:12px;padding:10px">Taphy Jokes • Homabay • Made by Taphy Samson 🇰🇪<br>Cheka • Furahi • Usijali!</div>
+
+<div class="bottom-nav">
+<div class="active"><span>😂</span>Home</div>
+<div onclick="newJoke()"><span>🎲</span>Random</div>
+<div onclick="showToast('❤️ Liked: 10 jokes!')"><span>❤️</span>Liked</div>
+<div onclick="showToast('📝 Tuma joke hapo juu!')"><span>📝</span>Send</div>
+<div onclick="showToast('🏆 Joke of Day: Homabay ni kama simu!')"><span>🏆</span>Top</div>
+</div>
+
+<div class="modal" id="modal"><div class="modalBox"><div id="modalContent"></div><button style="background:#333;color:white;width:100%" onclick="closeModal()">Close ✕</button></div></div>
+<div id="toast" style="position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#111;color:white;padding:10px 18px;border-radius:20px;font-weight:bold;font-size:13px;z-index:100;display:none"></div>
+
+<script>
+let jokes=[
+{Mwalimu:'Mwalimu: Kwa nini umechelewa shule? Mwanafunzi: Kwa sababu nilikuwa naota ndoto niko shule, nikiamka nikaona nimechelewa kweli!',cat:'🏫 School'},
+{Mwalimu:'Mvuvi: Samaki wa leo ni mkubwa! Mkewe: Mkubwa kama uongo wako?',cat:'🐟 Fishing'},
+{Mwalimu:'Mama: Kwa nini unacheza ball kila siku? Mtoto: Kwa sababu ball hainisumbui kama homework!',cat:'⚽ Football'},
+{Mwalimu:'Baba: Uko wapi? Mtoto: Niko Homabay! Baba: Lakini uko nyumbani! Mtoto: Nyumbani ni Homabay!',cat:'🇰🇪 Kenya'},
+{Mwalimu:'Mpenzi: Unanipenda? Mpenzi: Kama vile Homabay inapenda Lake Victoria - milele!',cat:'💖 Love'},
+{Mwalimu:'Mwalimu: 1+1 ni? Mwanafunzi: 2! Mwalimu: Sawa! Mwanafunzi: Sasa nipe 2 marks!',cat:'🏫 School'},
+{Mwalimu:'Wesley: Kwa nini unavaa miwani usiku? Ryan: Kwa sababu ndoto zangu ni bright!',cat:'😂 Funny'},
+];
+let idx=0;
+function showToast(m){ let t=document.getElementById('toast'); t.innerText=m; t.style.display='block'; setTimeout(()=>t.style.display='none',2500); }
+function newJoke(){
+  idx=(idx+1)%jokes.length;
+  let j=jokes[idx];
+  document.getElementById('jokeText').innerText=j.Mwalimu;
+  document.getElementById('jokeCat').innerText=j.cat+' • ❤️ '+(800+Math.floor(Math.random()*1000))+' • 😂 '+(300+Math.floor(Math.random()*500))+' laughs';
+  showToast('😂 New Joke!');
+}
+function filterJokes(btn){ document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); newJoke(); }
+function showJoke(text,emoji){
+  document.getElementById('modalContent').innerHTML='<div style="text-align:center"><div style="font-size:60px">'+emoji+'</div><h2 style="line-height:1.5;margin:10px 0">'+text+'</h2><p style="color:#888">😂 Cheka! 😂</p><button style="background:#ffcc00;color:#111;width:100%;padding:13px" onclick="showToast(\'😂 Hahaha!\')">😂 Hahaha!</button><button style="background:#25D366;color:white;width:100%;padding:13px" onclick="showToast(\'📲 Shared!\')">📲 Share</button></div>';
+  document.getElementById('modal').style.display='flex';
+}
+function sendJoke(){
+  let j=document.getElementById('myJoke').value.trim();
+  if(!j){ alert('Andika joke kwanza!'); return; }
+  showToast('😂 Joke imetumwa! Watu wataicheka!');
+  document.getElementById('myJoke').value='';
+}
+function closeModal(){ document.getElementById('modal').style.display='none'; }
+</script>
+</body>
+</html>
